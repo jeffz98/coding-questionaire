@@ -1,3 +1,14 @@
+
+// temporary hold for user score
+var score;
+// The timer
+var countdown = 100;
+
+// Pointers to different parts of the site
+var quizContainer = document.getElementById("main-container");
+var time = document.getElementById("time");
+var highScoresContainer = document.getElementById("highscore");
+
 // The quiz array stores in each index: the question, an array of each choice, the index of the right answer
 var questionnaire = [
     { 
@@ -37,17 +48,6 @@ var questionnaire = [
     },
     
 ]
-
-
-// temporary hold for user score
-var score;
-// The timer
-var countdown = 100;
-
-// Pointers to different parts of the site
-var quizContainer = document.getElementById("main-container");
-var time = document.getElementById("time");
-var highScoresContainer = document.getElementById("highscore");
 
 // Helper function: Save current user object to local storage
 function updateLocalStorage(userArray) {
@@ -196,6 +196,85 @@ function renderHighScores() {
 // When the highScoresContainer link is clicked, take them to the high scores board
 highScoresContainer.addEventListener("click", renderHighScores);
 
+
+
+
+// Function to update user's score and timer
+function checkAnswer(questionObj, answer) {
+    if (questionObj.correctAnswer === questionObj.answers.indexOf(answer)) {
+        score++;
+    } else {
+        countdown -= 10;
+    }
+}
+
+// Function that displays each question
+// The 'i' variable determines the question displayed
+var i = 0;
+// The 'endQuiz' variable indicates all questions have been answered and the timer must stop
+var endQuiz = false;
+function displayQuiz(i) {
+    // Exit and stop timer if we are past the last question
+    if (i === 7) {
+        endQuiz = true;
+        return;
+    }
+    // Empty main container
+    quizContainer.innerHTML = "";
+    // Change the id of quizContainer to state the styling for this screen
+    quizContainer.setAttribute("id", "quiz-screen");
+    // Hide link to view high scores board when user is taking the quiz
+    highScoresContainer.style.visibility = "hidden";
+
+    // Displays question
+    var quizQuestion = document.createElement("h1");
+    quizQuestion.setAttribute("class", "title");
+    quizQuestion.textContent = questionnaire[i].question;
+    quizContainer.appendChild(quizQuestion);
+
+    // Container used to place answer choices vertically
+    var div = document.createElement("div");
+    div.setAttribute("class", "choice-container")
+    quizContainer.appendChild(div);
+
+    // Displays answer choices
+    questionnaire[i].answers.forEach(answer => {
+        var answerBtn = document.createElement("button");
+        answerBtn.setAttribute("class", "choice-btn")
+        answerBtn.textContent = answer;
+        div.appendChild(answerBtn);
+
+        // When an answer is clicked, the question changes
+        answerBtn.addEventListener("click", () => {
+            // Update user's score and timer depending on answer selection
+            checkAnswer(questionnaire[i], answer);
+            i++;
+            displayQuiz(i);
+        })
+    })
+}
+
+// Function that runs when the user clicks the "Start" button in the landing page
+function startQuiz() {
+    displayQuiz(i);
+
+    // Set score to 0 every time the quiz is taken
+    score = 0;
+
+    // In here, the timer begins
+    var quizTimer = setInterval(function () {
+        countdown--;
+        time.innerHTML = "Time: " + countdown;
+
+        // If the user finishes quiz or runs out of time, take them to the post quiz screen
+        if (endQuiz || countdown <= 0) {
+            clearInterval(quizTimer);
+            postQuiz();
+        }
+    }, 1000)
+}
+
+
 // Once the user ends the quiz, display their score and ask for their initials for the scoreboard
 function postQuiz() {
     quizContainer.innerHTML = "";
@@ -245,5 +324,7 @@ function postQuiz() {
         }
     })
 }
-
-
+// Clear userArray and load landing page
+// to store the current user's initials and score
+var userArray = [];
+landingPage();
