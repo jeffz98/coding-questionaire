@@ -14,7 +14,7 @@ header {
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    color: rgb(250, 241, 241);
+    color: rgb(21, 18, 242);
     font-family: 'Merienda';font-size: 26px;
   }
 
@@ -24,23 +24,173 @@ body {
     background-color: rgba(255, 255, 255, 0.07);
 }
 
-.buttonHead {
-    border-radius: 10px;    
-    background-color: white;
-    text-decoration: none;
-    border: 0;
-    outline: 0; /* Remove border around button */
-    color: blueviolet;
-    font-family: 'Sans-Serif';
-    font-size: 20px;
+#secDiv {
+    margin-left: 25%;
+    margin-right: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+    font-family: 'Merienda';font-size: 22px;
 }
 
 .button {
     border-radius: 12px;
     border: 0;
-    outline: 0; /* Remove border around button */
+    outline: 0; 
     background-color: purple;
     color: white;
     font-family: 'Sans-Serif';
     font-size: 12px;
+}
+
+.buttonHead {
+    border-radius: 10px;    
+    background-color: white;
+    text-decoration: none;
+    border: 0;
+    outline: 0;
+    color: blueviolet;
+    font-family: 'Sans-Serif';
+    font-size: 20px;
+}
+
+#container{
+     display: grid;
+     grid-template-columns: repeat(2, 1fr) 2fr 1fr;  
+     grid-template-rows: repeat(10, 1fr); 
+     gap: 10px 10px; 
+     font-family: 'Merienda';font-size: 22px;
+ }
+ 
+ 
+ #questions {
+     text-align: center;
+     align-self: baseline;
+     grid-column: 2 / span 2;
+     grid-row: 1 / span 5;
+     place-self: center;
+     font-size: 30px;
+ }
+ 
+ #finScore {
+     
+     grid-column: 1 / span 2;
+     grid-row: 6 / span 1;
+     font-size: 15px;
+ }
+ 
+ 
+ 
+ #initials {
+     
+     grid-column: 1 / span 1;
+     grid-row: 7 / span 1;
+     font-size: 15px;
+ }
+ 
+ 
+ #initials-text {
+     
+     grid-column: 2 / span 1;
+     grid-row: 7 / span 1;
+     font-size: 15px;
+     resize: none;
+     
+ }
+
+ #submitScore {
+    grid-column: 3 / span 1;
+    grid-row: 7 / span 1;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10%;
+    border: 0;
+    outline: 0; 
+    background-color: purple;
+    color: white;
+    font-family: 'Merienda';font-size: 15px;
+}
+
+#start {
+    grid-column: 2 / span 2;
+    grid-row: 5 / span 1;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10%;
+    border: 0;
+    outline: 0; 
+    background-color: purple;
+    place-self: center;
+    color: white;
+    font-family: 'Merienda';font-size: 15px;
+}
+
+#a1 {
+    grid-column: 1 / span 2;
+    grid-row: 6 / span 1;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10%;
+    border: 0;
+    outline: 0;
+    background-color: purple;
+    color: white;
+    font-family: 'Merienda';font-size: 15px;
+    margin-left: 25px;
+}
+
+#a2 {
+    grid-column: 1 / span 2;
+    grid-row: 7 / span 1;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10%;
+    border: 0;
+    outline: 0; 
+    background-color: purple;
+    color: white;
+    font-family: 'Merienda';font-size: 15px;
+    margin-left: 25px;
+    margin-left: 25px;
+
+}
+
+#a3 {
+    grid-column: 1 / span 2;
+    grid-row: 8 / span 1;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10%;
+    border: 0;
+    outline: 0; 
+    background-color: purple;
+    color: white;
+    font-family: 'Merienda';font-size: 15px;
+    margin-left: 25px;
+}
+
+#a4 {
+    grid-column: 1 / span 2;
+    grid-row: 9 / span 1;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10%;
+    border: 0;
+    outline: 0; 
+    background-color: purple;
+    color: white;
+    font-family: 'Merienda';font-size: 15px;
+    margin-left: 25px;
+}
+
+#Right-Wrong-grid {
+    display: grid;
+    grid-template-columns: 4fr; 
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px 10px;
+    font-family: 'Merienda';font-size: 22px;
+
+}
+
+#right-wrong {
+    text-align: left;
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 2;
+    
 }
