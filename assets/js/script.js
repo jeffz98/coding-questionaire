@@ -1,15 +1,14 @@
 
-// temporary hold for user score
 var score;
-// The timer
+
 var countdown = 100;
 
-// Pointers to different parts of the site
+
 var quizContainer = document.getElementById("main-container");
 var time = document.getElementById("time");
 var highScoresContainer = document.getElementById("highscore");
 
-// The quiz array stores in each index: the question, an array of each choice, the index of the right answer
+
 var questionnaire = [
     { 
         question: "Inside which HTML element do we put the JavaScript?",
