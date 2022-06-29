@@ -49,17 +49,17 @@ var questionnaire = [
     
 ]
 
-
+// Helper function: Save current user object to local storage
 function updateLocalStorage(userArray) {
     localStorage.setItem("scores", JSON.stringify(userArray));
 }
 
-
+// Render landing page
 function landingPage() {
-    
+    // Ensure quiz container is empty before rendering
     quizContainer.innerHTML = "";
 
-    
+    // Change the id of quizContainer to state the styling for this screen
     quizContainer.setAttribute("id", "main-container");
 
     // Landing page container
