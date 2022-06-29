@@ -136,3 +136,114 @@ function getScoresFromLocalStorage(quizContainer) {
 }
 
 // Render high scores page
+function renderHighScores() {
+    // Ensure quiz container is empty before rendering
+    quizContainer.innerHTML = "";
+    // Show link to view high scores board after user is done taking the quiz
+    highScoresContainer.style.visibility = "visible";
+    // Reset countdown
+    countdown = 75;
+
+    // Change the id of quizContainer to state the styling for this screen
+    quizContainer.setAttribute("id", "highscore-pg");
+
+    var title = document.createElement("h1");
+    title.textContent = "High Scores";
+    quizContainer.appendChild(title);
+
+    // Get user information from local storage
+    getScoresFromLocalStorage(quizContainer);
+
+    // Container for the next three buttons
+    var div = document.createElement("div");
+    div.setAttribute("class", "btn-container");
+    quizContainer.appendChild(div);
+
+    // Button that allows user to retake the quiz
+    var backBtn = document.createElement("button");
+    backBtn.setAttribute("class", "highscore-btn");
+    backBtn.textContent = "Take quiz";
+    div.appendChild(backBtn);
+
+    backBtn.addEventListener("click", () => {
+        // Reset countdown
+        countdown = 75;
+        startQuiz();
+    });
+
+    // Button that allows user to clear scores board
+    var clearScoresBtn = document.createElement("button");
+    clearScoresBtn.setAttribute("class", "highscore-btn");
+    clearScoresBtn.textContent = "Clear high scores";
+    div.appendChild(clearScoresBtn);
+
+    clearScoresBtn.addEventListener("click" , () => {
+        localStorage.clear();
+        userArray = [];
+        renderHighScores();
+    })
+ 
+    // Button that takes user to landing page
+    var mainBtn = document.createElement("button");
+    mainBtn.setAttribute("class", "highscore-btn");
+    mainBtn.textContent = "Go back to landing page";
+    div.appendChild(mainBtn);
+
+    // Taking user back to the landing page
+    mainBtn.addEventListener("click", landingPage);
+}
+
+// When the highScoresContainer link is clicked, take them to the high scores board
+highScoresContainer.addEventListener("click", renderHighScores);
+
+// Once the user ends the quiz, display their score and ask for their initials for the scoreboard
+function postQuiz() {
+    quizContainer.innerHTML = "";
+    time.innerHTML = "Time: 0";
+
+    // Change id of quizContainer to state the styling for this screen
+    quizContainer.setAttribute("id", "post-quiz");
+    
+    // Container to style label and input for initials
+    var div = document.createElement("div");
+    div.setAttribute("class", "initials-container");
+
+    var finalMessage = document.createElement("h1");
+    finalMessage.textContent = "Nice work!";
+
+    var scoreMessage = document.createElement("h2");
+    scoreMessage.textContent = "Your final score is " + score + " out of 7.";
+
+    var nameLabel = document.createElement("label");
+    nameLabel.textContent = "Your initials: ";
+    nameLabel.setAttribute("for", "initials")
+
+    var nameInput = document.createElement("input");
+    nameInput.setAttribute("type", "text");
+    nameInput.setAttribute("id", "initials");
+
+    var submitBtn = document.createElement("button");
+    submitBtn.setAttribute("id", "input-submit");
+    submitBtn.textContent = "Submit";
+
+    // Append everything to the page
+    quizContainer.appendChild(finalMessage);
+    quizContainer.appendChild(scoreMessage);
+    quizContainer.appendChild(div);
+    div.appendChild(nameLabel);
+    div.appendChild(nameInput);
+    quizContainer.appendChild(submitBtn);
+
+    // When button is pressed, save user's info and take them to the high scores board
+    submitBtn.addEventListener("click", () => {
+        if (nameInput.value == "") {
+            alert("Please write your initials");
+        } else {
+            userArray.push({ userScore: score, userInitials: nameInput.value });
+            updateLocalStorage(userArray);
+            renderHighScores();
+        }
+    })
+}
+
+
