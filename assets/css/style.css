@@ -1,196 +1,167 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+:root {
+    --green: rgb(16, 232, 95);
+    --yellow: rgb(119, 131, 5);
+    --red: rgb(229, 25, 6);
+    --blue:rgb(5, 5, 221);
 }
 
 header {
-    display: flex; 
-    justify-content: space-between;
-    flex-wrap: wrap;
-    list-style: none;
-    height: 65px;
-    font-size: 2vw;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: rgb(21, 18, 242);
-    font-family: 'Merienda';font-size: 26px;
-  }
-
-
-body {
-    font-family: 'Sans-serif';font-size: 26px;
-    background-color: rgba(255, 255, 255, 0.07);
+    margin: 40px;
 }
 
-#secDiv {
-    margin-left: 25%;
-    margin-right: 25%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 50px;
-    font-family: 'Merienda';font-size: 22px;
-}
 
-.button {
-    border-radius: 12px;
-    border: 0;
-    outline: 0; 
-    background-color: purple;
-    color: white;
-    font-family: 'Sans-Serif';
-    font-size: 12px;
-}
-
-.buttonHead {
-    border-radius: 10px;    
-    background-color: white;
-    text-decoration: none;
-    border: 0;
-    outline: 0;
-    color: blueviolet;
-    font-family: 'Sans-Serif';
+button {
+    margin: 20px;
     font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--green);
+    cursor: pointer;
+}
+button:active {
+    box-shadow: none;
 }
 
-#container{
-     display: grid;
-     grid-template-columns: repeat(2, 1fr) 2fr 1fr;  
-     grid-template-rows: repeat(10, 1fr); 
-     gap: 10px 10px; 
-     font-family: 'Merienda';font-size: 22px;
- }
- 
- 
- #questions {
-     text-align: center;
-     align-self: baseline;
-     grid-column: 2 / span 2;
-     grid-row: 1 / span 5;
-     place-self: center;
-     font-size: 30px;
- }
- 
- #finScore {
-     
-     grid-column: 1 / span 2;
-     grid-row: 6 / span 1;
-     font-size: 15px;
- }
- 
- 
- 
- #initials {
-     
-     grid-column: 1 / span 1;
-     grid-row: 7 / span 1;
-     font-size: 15px;
- }
- 
- 
- #initials-text {
-     
-     grid-column: 2 / span 1;
-     grid-row: 7 / span 1;
-     font-size: 15px;
-     resize: none;
-     
- }
-
- #submitScore {
-    grid-column: 3 / span 1;
-    grid-row: 7 / span 1;
-    padding: 10px 10px 10px 10px;
-    border-radius: 10%;
-    border: 0;
-    outline: 0; 
-    background-color: purple;
-    color: white;
-    font-family: 'Merienda';font-size: 15px;
+header {
+    margin: 40px;
+}
+header nav{
+    display: flex;
+    justify-content: space-between;
 }
 
-#start {
-    grid-column: 2 / span 2;
-    grid-row: 5 / span 1;
-    padding: 10px 10px 10px 10px;
-    border-radius: 10%;
-    border: 0;
-    outline: 0; 
-    background-color: purple;
-    place-self: center;
-    color: white;
-    font-family: 'Merienda';font-size: 15px;
-}
+header nav a {
+    color:var(--green);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
 
-#a1 {
-    grid-column: 1 / span 2;
-    grid-row: 6 / span 1;
-    padding: 10px 10px 10px 10px;
-    border-radius: 10%;
-    border: 0;
-    outline: 0;
-    background-color: purple;
-    color: white;
-    font-family: 'Merienda';font-size: 15px;
-    margin-left: 25px;
 }
-
-#a2 {
-    grid-column: 1 / span 2;
-    grid-row: 7 / span 1;
-    padding: 10px 10px 10px 10px;
-    border-radius: 10%;
-    border: 0;
-    outline: 0; 
-    background-color: purple;
-    color: white;
-    font-family: 'Merienda';font-size: 15px;
-    margin-left: 25px;
-    margin-left: 25px;
+header nav a:hover {
+    font-weight: bolder;
+    font-size: larger;
 
 }
 
-#a3 {
-    grid-column: 1 / span 2;
-    grid-row: 8 / span 1;
-    padding: 10px 10px 10px 10px;
-    border-radius: 10%;
-    border: 0;
-    outline: 0; 
-    background-color: purple;
-    color: white;
-    font-family: 'Merienda';font-size: 15px;
-    margin-left: 25px;
+#main-container {
+    display: flex;
+    justify-content: center;
+    margin: 70px;
 }
 
-#a4 {
-    grid-column: 1 / span 2;
-    grid-row: 9 / span 1;
-    padding: 10px 10px 10px 10px;
-    border-radius: 10%;
-    border: 0;
-    outline: 0; 
-    background-color: purple;
-    color: white;
-    font-family: 'Merienda';font-size: 15px;
-    margin-left: 25px;
+#landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
 }
 
-#Right-Wrong-grid {
-    display: grid;
-    grid-template-columns: 4fr; 
-    grid-template-rows: repeat(2, 1fr);
-    gap: 10px 10px;
-    font-family: 'Merienda';font-size: 22px;
-
+#landing-page h1 {
+    font-size: 45px;
+    color: var(--yellow);
 }
 
-#right-wrong {
-    text-align: left;
-    grid-column: 1 / span 4;
-    grid-row: 1 / span 2;
-    
+#landing-page h2 {
+    padding: 10px 0;
+    color: var(--green);
+}
+
+#landing-page h3 {
+    width: fit-content;
+    padding: 30px 0;
+    font-weight: 600;
+    font-size: larger;
+    color: var(--blue);
+}
+
+#quiz-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.choice-container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+}
+
+.choice-container .choice-btn {
+    padding: 20px 10px;
+    margin: 10px;
+}
+
+
+
+#post-quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+#post-quiz h1 {
+    font-size: 45px;
+    color: var(--green);
+}
+
+#post-quiz h2 {
+    padding: 10px 0;
+    color: var(--blue);
+}
+
+#post-quiz label {
+    font-size: 25px;
+    margin: auto;
+    color: var(--red);
+}
+
+#post-quiz input {
+    padding: 10px;
+    margin-left: 10px;
+    color: var(--red);
+}
+
+.initials-container {
+    display: flex;
+    margin: 20px auto;
+}
+
+#input-submit {
+    padding: 10px 20px;
+}
+
+
+#highscore-pg {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+#highscore-pg h1 {
+    color: var(--yellow);
+}
+
+.score-text {
+    font-size: 25px;
+    margin: 15px;
+    padding: 10px;
+    background-color: antiquewhite;
+    border: 2px solid var(--yellow);
+    border-radius: 5px;
+}
+
+.btn-container {
+    margin: auto;
+    align-items: center;
 }
