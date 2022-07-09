@@ -5,18 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-    <title>Code Quiz</title>
+    <title>Coding Quiz</title>
 </head>
 <body>
     <header>
-        <nav>
-            <a href="#" id="highscore">High Scores</a>
-            <p id="time">Time: 100</p>
-        </nav>
+        <h1>Coding Quiz</h1>
+        <hr>
     </header>
-
-    <main id="main-container">
+    <main id="container">
+        <h2 class="main-header">Welcome, Please proceed to take this quiz!</h2>
+        <button class="button-element">Start</button>
     </main>
+    <section class="questions-container">
+         <h3 class="question"></h3>
+         <button id="option1"></button>
+         <button id="option2"></button>
+         <button id="option3"></button>
+         <button id="option4"></button>
+         <p id="user-answer"></p>
+    </section>
+    <br>
+    <section id="score-container">
+         <p id="score-number"></p>
+         <input type="text" id="user-name">
+         <br>
+         <button id="submit-button">Submit</button>
+         <br>
+    </section>
+    <footer>
+        <h3>Timer: <span id="time-left"></span></h3>
+    </footer>
+   
     <script src="./assets/js/script.js"></script>
-</body>
+ </body>
 </html>
