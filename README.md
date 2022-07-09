@@ -6,10 +6,10 @@ https://jeffz98.github.io/coding-questionaire/
 
 ## GIF demo
 
-![GIF demo of the application](./Assets/images/demo.gif)
+![GIF demo of the application](./Assets/images/CQdemo.gif)
 
 ## Screenshots
-![Screenshot of the application's landing page](./Assets/images/PassGenSS.png)
+![Screenshot of the application's landing page](./Assets/images/CQ.png)
 
 ### User Information
 - [LinkedIn](https://www.linkedin.com/in/jeffrey-zhang-52315522a/)
@@ -91,3 +91,10 @@ In the above code snippet, I'm asking for the user's responses and validating th
 ## Technologies Used
 
 HTML, CSS, JavaScript, and Git
+
+## Credits
+- [W3 Schools](https://www.w3schools.com/)
+
+## License
+
+MIT License

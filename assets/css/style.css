@@ -42,8 +42,40 @@
    align-items: center;
  }
   
- footer {
+ #timer {
     display: flex;
     justify-content: center;
     align-items: flex-end;
  }
+
+ #highScores{
+   height: 100%;
+   width: 0;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   left: 0;
+   overflow-x: hidden;
+   transition: 0.5s;
+   background-color: var(--mainColor5);
+}
+
+#closeScore{
+     position: absolute;
+     top: 5px;
+     right: 5px;
+     background: none;
+     border: none;
+     cursor: pointer;
+     font-size: larger;
+}
+#openButton{
+     margin-top: 10px;
+     background: none;
+     text-decoration: underline;
+     color: var(--mainColor1fade);
+     border: none;
+     cursor: pointer;
+     margin-left: 1vw;
+     font-size: 20px;
+}

@@ -87,6 +87,9 @@ btn.addEventListener("click", function startButton() {
     questionInput();
 })
 
+document.getElementById('openButton').addEventListener("click", openHighScores);
+document.getElementById('closeScore').addEventListener("click", closeHighScores);
+
 c1.addEventListener("click", cont)
 c2.addEventListener("click", cont)
 c3.addEventListener("click", cont)
@@ -96,16 +99,17 @@ c4.addEventListener("click", cont)
 //goes through all questions, displays a message saying correct or incorrect to the user
 function cont() {
     var answer = this.getAttribute("id") 
-    if (answer === "q1" && myQuiz[currentQuestion].answers[0].isCorrect === false) {
+    
+    if (answer === "choice1" && myQuiz[currentQuestion].answers[0].isCorrect === false) {
         userAnswer.textContent = "Incorrect!";
         time-=10;
-    }else if (answer === "q2" && myQuiz[currentQuestion].answers[1].isCorrect === false) {
+    } else if (answer === "choice2" && myQuiz[currentQuestion].answers[1].isCorrect === false) {
         userAnswer.textContent = "Incorrect!";
         time-=10;
-    } else if (answer === "q3" && myQuiz[currentQuestion].answers[2].isCorrect === false) {
+    } else if (answer === "choice3" && myQuiz[currentQuestion].answers[2].isCorrect === false) {
         userAnswer.textContent = "Incorrect!";
         time-=10;
-    } else if (answer === "q4" && myQuiz[currentQuestion].answers[3].isCorrect === false) {
+    } else if (answer === "choice4" && myQuiz[currentQuestion].answers[3].isCorrect === false) {
         userAnswer.textContent = "Incorrect!";
         time-=10;
     } else {
@@ -135,15 +139,25 @@ function score() {
     timerEl.innerText = time;
     questionsContainer.setAttribute("style", "display: none");
     scoreContainer.setAttribute("style", "display: flex");
-    document.getElementById("score-number").textContent = "Score: " + (numberCorrectQuestions + time);
+    var score = numberCorrectQuestions + time;
+    document.getElementById("score-number").textContent = "Score: " + (score);
+    
 }
 
 var submit = document.getElementById("submit-button")
 
-// listens for submit button to display highscores -- couldn't get to work
+// listens for submit button to display highscores 
 submit.addEventListener("click", function() {
     var userName = document.getElementById("user-name").value;
     var previousScore = JSON.parse(localStorage.getItem("Javascript-Quiz")) || []
     previousScore.push({user: userName, score: (numberCorrectQuestions + time)}) 
     localStorage.setItem("Javascript-Quiz", JSON.stringify(previousScore));
 })
+
+function openHighScores(){
+    document.getElementById('highScores').style.width = "20vw";
+}
+
+function closeHighScores(){
+    document.getElementById('highScores').style.width = '0vw';
+}
