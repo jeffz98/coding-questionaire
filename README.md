@@ -6,10 +6,10 @@ https://jeffz98.github.io/coding-questionaire/
 
 ## GIF demo
 
-![GIF demo of the application](./Assets/images/CQdemo.gif)
+![GIF demo of the application](./assets/images/CQdemo.gif)
 
 ## Screenshots
-![Screenshot of the application's landing page](./Assets/images/CQ.png)
+![Screenshot of the application's landing page](./assets/images/CQ.png)
 
 ### User Information
 - [LinkedIn](https://www.linkedin.com/in/jeffrey-zhang-52315522a/)
