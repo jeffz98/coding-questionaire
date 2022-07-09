@@ -15,7 +15,7 @@ var userAnswer = document.getElementById("user-choice")
 var scoreContainer = document.getElementById("score-cont")
 
 var currentQuestion = 0
-var numberCorrectQuestions = 0 
+var numberCorrectAnswers = 0 
 
 //key-value pair that stores question, and correct answer
 var myQuiz = [
@@ -113,7 +113,7 @@ function cont() {
         userAnswer.textContent = "Incorrect!";
         time-=10;
     } else {
-        numberCorrectQuestions++;
+        numberCorrectAnswers++;
         userAnswer.textContent = "Correct!";
     }
     if(currentQuestion < myQuiz.length-1) {
@@ -139,7 +139,7 @@ function score() {
     timerEl.innerText = time;
     questionsContainer.setAttribute("style", "display: none");
     scoreContainer.setAttribute("style", "display: flex");
-    var score = numberCorrectQuestions + time;
+    var score = numberCorrectAnswers + time;
     document.getElementById("score-number").textContent = "Score: " + (score);
     
 }
@@ -150,7 +150,7 @@ var submit = document.getElementById("submit-button")
 submit.addEventListener("click", function() {
     var userName = document.getElementById("user-name").value;
     var previousScore = JSON.parse(localStorage.getItem("Javascript-Quiz")) || []
-    previousScore.push({user: userName, score: (numberCorrectQuestions + time)}) 
+    previousScore.push({user: userName, score: (numberCorrectAnswers + time)}) 
     localStorage.setItem("Javascript-Quiz", JSON.stringify(previousScore));
 })
 
