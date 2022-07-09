@@ -1,23 +1,23 @@
-var button = document.querySelector(".button-element")
-var mainContainer = document.getElementById("container")
-var questionsContainer = document.querySelector(".questions-container")
+var btn = document.querySelector(".button-element")
+var mainCont = document.getElementById("container")
+var questionsContainer = document.querySelector(".questions-cont")
 var timerEl = document.querySelector("#time-left")
 var timer;
-var sec = 60;
+var time = 75;
 var isCorrect = true
 
 var question1 = document.querySelector(".question");
-var option1 = document.querySelector("#option1");
-var option2 = document.querySelector("#option2");
-var option3 = document.querySelector("#option3");
-var option4 = document.querySelector("#option4");
-var userAnswer = document.getElementById("user-answer")
-var scoreContainer = document.getElementById("score-container")
+var c1 = document.querySelector("#choice1");
+var c2 = document.querySelector("#choice2");
+var c3 = document.querySelector("#choice3");
+var c4 = document.querySelector("#choice4");
+var userAnswer = document.getElementById("user-choice")
+var scoreContainer = document.getElementById("score-cont")
 
 var currentQuestion = 0
 var numberCorrectQuestions = 0 
 
-//object that contains the 5 questions, answer choices, and correct answer
+//key-value pair that stores question, and correct answer
 var myQuiz = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
@@ -32,7 +32,7 @@ var myQuiz = [
         question: "What is the correct JavaScript syntax to write 'Hello World'?",
         answers: [
             {a: "response.write('Hello World')", isCorrect: false}, 
-            {b: "'Hello World'>", isCorrect: false}, 
+            {b: "<Hello World>", isCorrect: false}, 
             {c: "document.write('Hello World')", isCorrect: false}, 
             {d: "('Hello World')", isCorrect: true}
         ]
@@ -67,50 +67,50 @@ var myQuiz = [
 ];
 
 
-//this function creates the timer that counts down from 60 and stops at 0
+//creates a timer starting from 75
 function timerStart () {
     timer = setInterval(function name() {
-        timerEl.innerText = sec;
-        sec --;
-    if (sec < 0) {
+        timerEl.innerText = time;
+        time--;
+    if (time < 0) {
         score()
         }
     }, 1000);
     
 }
 
-//when the start button is clicked, the paragraph and button disappear, the timer starts, and the first question appears
-button.addEventListener("click", function startButton() {
-   mainContainer.setAttribute("style", "display: none");
+//when start button is clicked, display the first question
+btn.addEventListener("click", function startButton() {
+   mainCont.setAttribute("style", "display: none");
    questionsContainer.setAttribute("style", "display: flex");
     timerStart();
     questionInput();
 })
 
-option1.addEventListener("click", next)
-option2.addEventListener("click", next)
-option3.addEventListener("click", next)
-option4.addEventListener("click", next)
+c1.addEventListener("click", cont)
+c2.addEventListener("click", cont)
+c3.addEventListener("click", cont)
+c4.addEventListener("click", cont)
 
 
-//this function moves through the questions, if the answer is incorrect it will display a message that is incorrect, and if the answer is correct, it will display a message that is correct
-function next() {
+//goes through all questions, displays a message saying correct or incorrect to the user
+function cont() {
     var answer = this.getAttribute("id") 
-    if (answer === "option1" && myQuiz[currentQuestion].answers[0].isCorrect === false) {
-        userAnswer.textContent = "That answer is incorrect.";
-        sec-=10
-    }else if (answer === "option2" && myQuiz[currentQuestion].answers[1].isCorrect === false) {
-        userAnswer.textContent = "That answer is incorrect.";
-        sec-=10
-    } else if (answer === "option3" && myQuiz[currentQuestion].answers[2].isCorrect === false) {
-        userAnswer.textContent = "That answer is incorrect.";
-        sec-=10
-    } else if (answer === "option4" && myQuiz[currentQuestion].answers[3].isCorrect === false) {
-        userAnswer.textContent = "That answer is incorrect.";
-        sec-=10
+    if (answer === "q1" && myQuiz[currentQuestion].answers[0].isCorrect === false) {
+        userAnswer.textContent = "Incorrect!";
+        time-=10;
+    }else if (answer === "q2" && myQuiz[currentQuestion].answers[1].isCorrect === false) {
+        userAnswer.textContent = "Incorrect!";
+        time-=10;
+    } else if (answer === "q3" && myQuiz[currentQuestion].answers[2].isCorrect === false) {
+        userAnswer.textContent = "Incorrect!";
+        time-=10;
+    } else if (answer === "q4" && myQuiz[currentQuestion].answers[3].isCorrect === false) {
+        userAnswer.textContent = "Incorrect!";
+        time-=10;
     } else {
         numberCorrectQuestions++;
-        userAnswer.textContent = "That answer is correct.";
+        userAnswer.textContent = "Correct!";
     }
     if(currentQuestion < myQuiz.length-1) {
         currentQuestion++;
@@ -120,30 +120,30 @@ function next() {
     }
 }
 
-//this function displays the text content displayed in the myQuiz array depending on the current question
+//displays the current question for the user
 function questionInput() {
     question1.textContent = myQuiz[currentQuestion].question;
-    option1.textContent = myQuiz[currentQuestion].answers[0].a;
-    option2.textContent = myQuiz[currentQuestion].answers[1].b;
-    option3.textContent = myQuiz[currentQuestion].answers[2].c;
-    option4.textContent = myQuiz[currentQuestion].answers[3].d;
+    c1.textContent = myQuiz[currentQuestion].answers[0].a;
+    c2.textContent = myQuiz[currentQuestion].answers[1].b;
+    c3.textContent = myQuiz[currentQuestion].answers[2].c;
+    c4.textContent = myQuiz[currentQuestion].answers[3].d;
 }
 
-//this function clears the time so it stops at 0 instead of going into the negatives; it also makes the questions container disapper and displays the score
+//clears the time and displays the score
 function score() {
     clearInterval(timer);
-    timerEl.innerText = sec;
+    timerEl.innerText = time;
     questionsContainer.setAttribute("style", "display: none");
     scoreContainer.setAttribute("style", "display: flex");
-    document.getElementById("score-number").textContent = "Score: " + (numberCorrectQuestions + sec);
+    document.getElementById("score-number").textContent = "Score: " + (numberCorrectQuestions + time);
 }
 
 var submit = document.getElementById("submit-button")
 
-// this is listening for the submit button to be clicked; when clicked, it shows the user's previous scores
+// listens for submit button to display highscores -- couldn't get to work
 submit.addEventListener("click", function() {
     var userName = document.getElementById("user-name").value;
     var previousScore = JSON.parse(localStorage.getItem("Javascript-Quiz")) || []
-    previousScore.push({user: userName, score: (numberCorrectQuestions + sec)}) 
+    previousScore.push({user: userName, score: (numberCorrectQuestions + time)}) 
     localStorage.setItem("Javascript-Quiz", JSON.stringify(previousScore));
 })
